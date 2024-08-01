@@ -1,0 +1,7 @@
+node_modules
+*.js
+!test/**/*.js
+testroot/**/index.json
+collection*
+npm-debug.log.*
+*.map

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es2017"],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es2017",
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "types": ["@iiif/vocabulary", "@types/node"],
+    "sourceMap": true,
+    "watch": true
+  },
+  "include": ["./"],
+  "exclude": ["node_modules", "test"]
+}

@@ -50,16 +50,10 @@ export const build = async (
 };
 
 /*
-const fileListData: string[] = [
-  "_cotton_ms_nero_d_iv_fblefr",
-  "_cotton_ms_nero_d_iv_fblefv",
-  "_cotton_ms_nero_d_iv_fs001r",
-  "_cotton_ms_nero_d_iv_fs001v",
-];
-
 build(
   "C://Users/thoma/Documents/BLWork/Digital-Manuscripts/testManuscript",
   "http://localhost:8182/biiif/collection/",
   "http://localhost:8182/iiif/2/",
   "_cotton_ms_nero_d_iv_fblefr¬_cotton_ms_nero_d_iv_fblefv¬_cotton_ms_nero_d_iv_fs001r"
-);*/
+);
+*/

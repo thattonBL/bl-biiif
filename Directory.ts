@@ -39,18 +39,27 @@ export class Directory {
   public parentDirectory: Directory | undefined;
   public url: URL;
   public imageServiceUrl: URL;
+  public fileSequenceList: string[];
   public virtualName: string | undefined; // used when root directories are dat/ipfs keys
 
   constructor(
     directoryFilePath: string,
     url: string,
     imageServiceUrl?: string,
+    sequenceList?: string,
     virtualName?: string,
     parentDirectory?: Directory
   ) {
     this.directoryFilePath = directoryFilePath;
     this.url = new URL(url);
     this.imageServiceUrl = new URL(imageServiceUrl);
+    if (
+      sequenceList != null &&
+      sequenceList != undefined &&
+      sequenceList.length > 0
+    ) {
+      this.fileSequenceList = sequenceList.split("¬");
+    }
     this.parentDirectory = parentDirectory;
     this.virtualName = virtualName;
   }
@@ -59,14 +68,27 @@ export class Directory {
     // canvases are directories starting with an underscore
     const canvasesPattern: string = this.directoryFilePath + "/_*";
 
-    const canvases: string[] = await glob(canvasesPattern, {
+    let canvases: string[] = await glob(canvasesPattern, {
       ignore: ["**/*.yml", "**/thumb.*", "**/!*"],
     });
 
-    // sort canvases
-    canvases.sort((a, b) => {
-      return compare(a, b);
-    });
+    if (this.fileSequenceList != undefined && this.fileSequenceList != null) {
+      //sort canvases by sequence list provided
+      //only works with one level of folder
+      let newCanvases: string[] = [];
+      for (const mySubstring of this.fileSequenceList) {
+        const foundCanvas = canvases.find((can) => can.includes(mySubstring));
+        if (foundCanvas) {
+          newCanvases.push(foundCanvas);
+        }
+      }
+      canvases = newCanvases;
+    } else {
+      // sort canvases
+      canvases.sort((a, b) => {
+        return compare(a, b);
+      });
+    }
 
     await Promise.all(
       canvases.map(async (canvas: string) => {
@@ -112,6 +134,7 @@ export class Directory {
           directory,
           url,
           imageUrl,
+          undefined,
           undefined,
           this
         );

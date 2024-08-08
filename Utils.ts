@@ -3,7 +3,7 @@ import {
   ExternalResourceType,
 } from "@iiif/vocabulary/dist-commonjs/";
 import { Directory } from "./Directory";
-import { dirname, extname } from "path";
+import { extname } from "path";
 import { IConfigJSON } from "./IConfigJSON";
 import { join, basename } from "path";
 import { promise as glob } from "glob-promise";
@@ -258,11 +258,16 @@ export const getThumbnail = async (
             body.type.toLowerCase() === ExternalResourceType.IMAGE &&
             !isJsonFile(body.id)
           ) {
-            let imageName: string = body.id.substr(body.id.lastIndexOf("/"));
+            let imageName: string = body.id.substr(
+              0,
+              body.id.lastIndexOf("/") - 6
+            );
             if (imageName.includes("#")) {
               imageName = imageName.substr(0, imageName.lastIndexOf("#"));
             }
-
+            json.thumbnail = urljoin(imageName, "!100,100", "0", "default.jpg");
+            log("tumbnail = " + json.thumbnail);
+            /*
             const imagePath: string = normaliseFilePath(join(fp, imageName));
             let pathToThumb: string = normaliseFilePath(
               join(dirname(imagePath), "thumb.jpg")
@@ -327,6 +332,7 @@ export const getThumbnail = async (
             thumbnailJson[0].id = path;
 
             json.thumbnail = thumbnailJson;
+            */
           }
         }
       }
@@ -334,7 +340,7 @@ export const getThumbnail = async (
   }
 };
 
-const getThumbnailUrl = (directory: Directory) => {
+/*const getThumbnailUrl = (directory: Directory) => {
   let path: string = "";
 
   while (directory) {
@@ -362,7 +368,7 @@ const getThumbnailUrl = (directory: Directory) => {
   }
 
   return urljoin(directory.url.href, path, "thumb.jpg");
-};
+};*/
 
 export const getLabel = (value: string): any => {
   const labelJson: any = cloneJson(labelBoilerplate);

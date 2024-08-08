@@ -62,6 +62,7 @@ export class Canvas {
       this.parentDirectory.url.href,
       this.parentDirectory.imageServiceUrl.href,
       undefined,
+      undefined,
       this.parentDirectory
     );
 
@@ -340,7 +341,14 @@ export class Canvas {
         }
 
         const fileName: string = basename(file);
-        const id: string = urljoin(this.imageServiceUrl.href, fileName);
+        const id: string = urljoin(
+          this.imageServiceUrl.href,
+          fileName.replace(/\.[^/.]+$/, ""),
+          "full",
+          "full",
+          "0",
+          "default.jpg"
+        );
 
         if (defaultPaintingExtension) {
           defaultPaintingExtension = defaultPaintingExtension[0];

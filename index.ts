@@ -5,6 +5,7 @@ export const build = async (
   dir: string,
   url: string,
   imageServiceUrl?: string,
+  sequenceList?: string,
   virtualName?: string
 ): Promise<void> => {
   log(`started biiifing ${dir}`);
@@ -39,6 +40,7 @@ export const build = async (
     dir,
     url,
     imageServiceUrl,
+    sequenceList,
     virtualName
   );
 
@@ -47,8 +49,17 @@ export const build = async (
   log(`finished biiifing ${dir}`);
 };
 
-/*build(
-  "C://Users/thoma/Documents/Git-Source/bl-biiif-template-net2-test/collection",
-  "http://localhost:86/biiif/collection/",
-  "http://tomsbigglygoodImageServer/"
+/*
+const fileListData: string[] = [
+  "_cotton_ms_nero_d_iv_fblefr",
+  "_cotton_ms_nero_d_iv_fblefv",
+  "_cotton_ms_nero_d_iv_fs001r",
+  "_cotton_ms_nero_d_iv_fs001v",
+];
+
+build(
+  "C://Users/thoma/Documents/BLWork/Digital-Manuscripts/testManuscript",
+  "http://localhost:8182/biiif/collection/",
+  "http://localhost:8182/iiif/2/",
+  "_cotton_ms_nero_d_iv_fblefr¬_cotton_ms_nero_d_iv_fblefv¬_cotton_ms_nero_d_iv_fs001r"
 );*/

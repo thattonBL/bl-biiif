@@ -1,11 +1,11 @@
 {
-  "name": "biiif",
-  "version": "1.0.7",
-  "description": "A CLI to build IIIF collections",
+  "name": "bl-biiif",
+  "version": "1.0.4",
+  "description": "A CLI to build IIIF collections modified from BIIIF to meet BL requirements",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edsilv/biiif.git"
+    "url": "git+https://github.com/thattonBL/bl-biiif"
   },
   "scripts": {
     "build": "npm run format && tsc",
@@ -27,9 +27,9 @@
   "author": "@edsilv",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/edsilv/biiif/issues"
+    "url": "https://github.com/thattonBL/bl-biiif/issues"
   },
-  "homepage": "https://github.com/edsilv/biiif#readme",
+  "homepage": "https://github.com/thattonBL/bl-biiif#readme",
   "dependencies": {
     "@iiif/vocabulary": "^1.0.20",
     "chalk": "^4.1.0",

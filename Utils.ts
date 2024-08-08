@@ -265,7 +265,7 @@ export const getThumbnail = async (
             if (imageName.includes("#")) {
               imageName = imageName.substr(0, imageName.lastIndexOf("#"));
             }
-            json.thumbnail = urljoin(imageName, "!100,100", "0", "default.jpg");
+            json.thumbnail = urljoin(imageName, "90,", "0", "default.jpg");
             log("tumbnail = " + json.thumbnail);
             /*
             const imagePath: string = normaliseFilePath(join(fp, imageName));

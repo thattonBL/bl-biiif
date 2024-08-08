@@ -1,6 +1,6 @@
 {
   "name": "bl-biiif",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A CLI to build IIIF collections modified from BIIIF to meet BL requirements",
   "main": "index.js",
   "repository": {
